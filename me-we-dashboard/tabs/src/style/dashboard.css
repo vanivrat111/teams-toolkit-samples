@@ -1,0 +1,129 @@
+@media screen and (min-width: 480px) {
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #F5F5F5;
+  }
+
+  .dashboard::-webkit-scrollbar {
+    visibility: hidden;
+  }
+
+  .dashboard-above {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;    
+    margin-top: -134px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .dashboard-bottom {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px; 
+    margin-bottom: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .dashboard-above-left {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 7;
+  }
+
+  .dashboard-above-right {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    flex: 3;
+  }
+
+  .dashboard-bottom-left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    flex: 7;
+  }
+
+  .dashboard-bottom-right {
+    display: flex;
+    flex: 3;
+    flex-shrink: 3;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #F5F5F5;
+  }
+
+  .dashboard-above {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;    
+    margin-top: -134px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .dashboard-bottom {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px; 
+    margin-bottom: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .dashboard::-webkit-scrollbar {
+    visibility: hidden;
+  }
+
+  
+  .dashboard-above-left {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 7;
+  }
+
+  .dashboard-above-right {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    flex: 3;
+  }
+
+  .dashboard-bottom-left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    flex: 7;
+  }
+
+  .dashboard-bottom-right {
+    display: flex;
+    flex: 3;
+    flex-shrink: 3;
+  }
+
+
+
+}
