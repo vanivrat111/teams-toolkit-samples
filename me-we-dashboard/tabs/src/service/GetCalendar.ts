@@ -48,9 +48,10 @@ export async function getCalendar() {
   try {
     teamsfx = FxContext.getInstance().getTeamsFx();
     const graphClient: Client = createMicrosoftGraphClient(teamsfx, scope);
+    let curTime = new Date();
     const tasklists = await graphClient
       .api(
-        "/me/events?$top=5&$select=subject,bodyPreview,organizer,attendees,start,end,location,onlineMeeting"
+        "/me/events?$top=5&$select=subject,bodyPreview,organizer,attendees,start,end,location,onlineMeeting"+'&$filter=start/dateTime ge \''+curTime.toDateString()+'\''
       )
       .get();
       
@@ -66,6 +67,7 @@ export async function getCalendar() {
           ? obj["onlineMeeting"]["joinUrl"] 
           : undefined,
       };
+      // filter that time of meetings are later than current time
       returnAnswer.push(tmp);
     }
     return returnAnswer;
