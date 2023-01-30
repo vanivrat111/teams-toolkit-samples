@@ -47,5 +47,11 @@ This section is optional to have. Have this section here only when it is applica
 
 You can use this section to describe the known issues of this sample.
 
+## Version History
+|Date| Author| Comments|
+|---|---|---|
+|Dec 15, 2022| zhany | update to support Teams Toolkit V4.2.0|
+|Jan 30, 2023| Zhany | update to support NodeJS 18|
+
 ## Feedback
-> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
