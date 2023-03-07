@@ -1,0 +1,39 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "tab-codespaces",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:16",
+
+  // Default workspace folder
+	"workspaceFolder": "/workspaces/TeamsFx-Samples/hello-world-tab-codespaces/",
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		53000
+	],
+	"portsAttributes": {
+		"53000": {
+			"label": "tab",
+			"protocol": "https"
+		}
+	},
+	
+  "remoteUser": "node",
+	
+  // Set feature flag to use TeamsFx v5, will be cleaned up once TeamsFx v5 is released
+	"remoteEnv": {
+		"TEAMSFX_V3": "true"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"TeamsDevApp.ms-teams-vscode-extension"
+			]
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"version": "latest"
+		}
+	}
+}

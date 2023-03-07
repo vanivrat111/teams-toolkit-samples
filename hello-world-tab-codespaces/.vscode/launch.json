@@ -2,6 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Preview in Codespaces",
+            "type": "node",
+            "request": "launch",
+            "preLaunchTask": "Start Teams App in Codespaces",
+            "postDebugTask": "Stop All",
+            "presentation": {
+                "group": "all",
+                "order": 0
+            },
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
             "name": "Launch Remote (Edge)",
             "type": "pwa-msedge",
             "request": "launch",

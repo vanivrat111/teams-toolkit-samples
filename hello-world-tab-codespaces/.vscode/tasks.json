@@ -5,6 +5,18 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Start Teams App in Codespaces",
+            "dependsOn": [
+                "Validate prerequisites",
+                "Configure port visibility",
+                "Create resources",
+                "Build project",
+                "Start application",
+                "Open Teams Web Client"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
             "label": "Start Teams App Locally",
             "dependsOn": [
                 "Validate prerequisites",
@@ -80,6 +92,34 @@
                     "endsPattern": "Compiled|Failed|compiled|failed"
                 }
             }
+        },
+        {
+            "label": "Configure port visibility",
+            "type": "shell",
+            "command": "gh codespace ports visibility 53000:public -c $CODESPACE_NAME"
+        },
+        {
+            // Launch Teams web client.
+            // See https://aka.ms/teamsfx-deploy-task to know the details and how to customize the args.
+            "label": "Open Teams Web Client",
+            "type": "teamsfx",
+            "command": "launch-web-client",
+            "args": {
+              "env": "local"
+            }
+        },
+        {
+            "label": "Stop All",
+            "type": "shell",
+            "command": "echo ${input:terminate}"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "terminate",
+            "type": "command",
+            "command": "workbench.action.tasks.terminate",
+            "args": "terminateAll"
         }
     ]
 }
