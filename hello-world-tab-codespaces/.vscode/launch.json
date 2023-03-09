@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Preview in Codespaces",
+            "name": "Preview (Codespaces)",
             "type": "node",
             "request": "launch",
             "preLaunchTask": "Start Teams App in Codespaces",
