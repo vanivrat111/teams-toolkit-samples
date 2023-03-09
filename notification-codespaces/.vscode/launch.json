@@ -24,34 +24,6 @@
             "internalConsoleOptions": "neverOpen"
         },
         {
-            "name": "Launch Bot (Edge)",
-            "type": "pwa-msedge",
-            "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${local:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "cascadeTerminateToConfigurations": [
-                "Attach to Bot"
-            ],
-            "presentation": {
-                "group": "all",
-                "hidden": true
-            },
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "name": "Launch Bot (Chrome)",
-            "type": "pwa-chrome",
-            "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${local:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "cascadeTerminateToConfigurations": [
-                "Attach to Bot"
-            ],
-            "presentation": {
-                "group": "all",
-                "hidden": true
-            },
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
             "name": "Attach to Bot",
             "type": "pwa-node",
             "request": "attach",
@@ -66,28 +38,14 @@
     ],
     "compounds": [
         {
-            "name": "Debug (Edge)",
+            "name": "Debug (Codespaces)",
             "configurations": [
-                "Launch Bot (Edge)",
                 "Attach to Bot"
             ],
-            "preLaunchTask": "Start Teams App Locally",
+            "preLaunchTask": "Start Teams App in Codespaces",
             "presentation": {
                 "group": "all",
                 "order": 1
-            },
-            "stopAll": true
-        },
-        {
-            "name": "Debug (Chrome)",
-            "configurations": [
-                "Launch Bot (Chrome)",
-                "Attach to Bot"
-            ],
-            "preLaunchTask": "Start Teams App Locally",
-            "presentation": {
-                "group": "all",
-                "order": 2
             },
             "stopAll": true
         }

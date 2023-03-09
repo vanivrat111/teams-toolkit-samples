@@ -5,13 +5,14 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Start Teams App Locally",
+            "label": "Start Teams App in Codespaces",
             "dependsOn": [
                 "Validate prerequisites",
-                "Start local tunnel",
+                "Configure port visibility",
                 "Create resources",
                 "Build project",
-                "Start application"
+                "Start application",
+                "Open Teams Web Client"
             ],
             "dependsOrder": "sequence"
         },
@@ -32,28 +33,6 @@
                     9239 // bot inspector port for Node.js debugger
                 ]
             }
-        },
-        {
-            // Start the local tunnel service to forward public ngrok URL to local port and inspect traffic.
-            // See https://aka.ms/teamsfx-local-tunnel-task for the detailed args definitions,
-            // as well as samples to:
-            //   - use your own ngrok command / configuration / binary
-            //   - use your own tunnel solution
-            //   - provide alternatives if ngrok does not work on your dev machine
-            "label": "Start local tunnel",
-            "type": "teamsfx",
-            "command": "debug-start-local-tunnel",
-            "args": {
-                "ngrokArgs": "http 3978 --log=stdout --log-format=logfmt",
-                "env": "local",
-                "output": {
-                    // output to .env.local
-                    "endpoint": "BOT_ENDPOINT", // output tunnel endpoint as BOT_ENDPOINT
-                    "domain": "BOT_DOMAIN" // output tunnel domain as BOT_DOMAIN
-                }
-            },
-            "isBackground": true,
-            "problemMatcher": "$teamsfx-local-tunnel-watch"
         },
         {
             // Create the debug resources.
@@ -105,6 +84,21 @@
                     "beginsPattern": "[nodemon] starting",
                     "endsPattern": "restify listening to|Bot/ME service listening at|[nodemon] app crashed"
                 }
+            }
+        },
+        {
+            "label": "Configure port visibility",
+            "type": "shell",
+            "command": "gh codespace ports visibility 53000:public -c $CODESPACE_NAME"
+        },
+        {
+            // Launch Teams web client.
+            // See https://aka.ms/teamsfx-deploy-task to know the details and how to customize the args.
+            "label": "Open Teams Web Client",
+            "type": "teamsfx",
+            "command": "launch-web-client",
+            "args": {
+              "env": "local"
             }
         }
     ]

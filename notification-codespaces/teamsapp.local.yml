@@ -21,7 +21,7 @@ provision:
     with:
       botId: ${{BOT_ID}}
       name: notification-app
-      messagingEndpoint: ${{BOT_ENDPOINT}}/api/messages
+      messagingEndpoint: https://${{CODESPACE_NAME}}-3978.${{GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}}/api/messages
       description: ""
       channels:
         - name: msteams
