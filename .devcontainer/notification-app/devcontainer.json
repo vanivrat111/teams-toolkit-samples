@@ -27,8 +27,8 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "update.mode": "none",
-          "extensions.autoUpdate": false
+        "extensions.autoUpdate": false,
+        "extensions.autoCheckUpdates": false
       },
       "extensions": [
         // Temporally workaround to install an un-published version of Teams Toolkit
