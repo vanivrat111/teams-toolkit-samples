@@ -81,7 +81,7 @@
         {
             "label": "Configure port visibility",
             "type": "shell",
-            "command": "gh codespace ports visibility 53000:public -c $CODESPACE_NAME"
+            "command": "gh codespace ports visibility 3978:public -c $CODESPACE_NAME"
         },
         {
             // Launch Teams web client.
