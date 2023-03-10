@@ -35,7 +35,7 @@
         // Temporally workaround to install an un-published version of Teams Toolkit
         // Will install from marketplace once we ship the codespaces support.
         "/workspaces/TeamsFx-Samples/.devcontainer/ms-teams-vscode-extension.vsix"
-        //"TeamsDevApp.ms-teams-vscode-extension",
+        //"TeamsDevApp.ms-teams-vscode-extension@prerelease",
       ]
     }
   },
