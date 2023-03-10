@@ -1,55 +1,42 @@
-# Teams Toolkit v5.0 Pre-release
+# Getting Started with Notification Sample
 
-### What does pre-release mean?
-Pre-release is meant for those who are eager to try the latest Teams Toolkit features and fixes. Even though pre-releases are not intended for use in production, they are at a sufficient quality level for you to generally use and [provide feedback](https://aka.ms/ttk-feedback). However, pre-release versions can and probably will change, and those changes could be major.
+[![Open notification app in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=dol%2Fcodespaces&repo=348288141&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fnotification-app%2Fdevcontainer.json&location=SouthEastAsia)
 
-We've addressed a number of reported bugs and added major changes in this release based on your feedback to make Teams Toolkit more flexible. Some of the key highlights to these changes include:
+> Note: We really appreciate your feedback! If you encounter any issue or error, please report issues to us following the [Supporting Guide](https://github.com/OfficeDev/TeamsFx-Samples/blob/dev/SUPPORT.md). Meanwhile you can make [recording](https://aka.ms/teamsfx-record) of your journey with our product, they really make the product better. Thank you!
+>  
+> This warning will be removed when the samples are ready for production.
 
-- Use existing infrastructure, resource groups, and more when provisioning
-- Use an existing Teams app ID
-- Use an existing Azure AD app registration ID
-- Use a different tunneling solution or customize the defaults
-- Add custom steps to debugging, provisioning, deploying, publishing, etc.
+This sample showcases an app that send a message to Teams with Adaptive Cards triggered by a HTTP post request. You can further extend the template to consume, transform and post events to individual, chat or channel in Teams.
 
-### What about my existing Teams Toolkit projects?
-The changes in this pre-release require upgrades to the TeamsFx configuration files. We recommend that you create a new app using this version. In the future, we'll provide a way to automatically upgrade existing Teams apps that were created with a previous version of Teams Toolkit.
+The app is built using the TeamsFx SDK, which provides a simple set of functions over the Microsoft Bot Framework to implement this scenario.
 
-Learn more about the changes in this pre-release at [https://aka.ms/teamsfx-v5.0-guide](https://aka.ms/teamsfx-v5.0-guide).
+## Prerequisite
+- [Node.js](https://nodejs.org/), supported versions: 14, 16, 18 (preview)
+- A Microsoft 365 account. If you do not have Microsoft 365 account, apply one from [Microsoft 365 developer program](https://developer.microsoft.com/en-us/microsoft-365/dev-program)
+- Latest [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) or [TeamsFx CLI](https://aka.ms/teamsfx-cli)
+- An [Azure subscription](https://azure.microsoft.com/en-us/free/)
 
-# Overview of the Notification bot template
+## What you will learn in this sample:
+- How to build notification app with Teams Toolkit
+- How to send notification in Teams
 
-This template showcases an app that send a message to Teams with Adaptive Cards triggered by a HTTP post request. You can further extend the template to consume, transform and post events to individual, chat or channel in Teams.
+## Try the Sample in GitHub Codespaces:
+1. Click [Open in GitHub Codespaces](#getting-started-with-notification-sample) badge to create a codespace for the notification sample.
 
-The app template is built using the TeamsFx SDK, which provides a simple set of functions over the Microsoft Bot Framework to implement this scenario.
+2. Once your codespace is created, Select the Teams Toolkit icon on the left in the VS Code toolbar. And then select `Preview your Teams app (F5)` from Teams Toolkit or simply press `F5` to run and preview your application:
 
-## Get Started with the Notification bot
+4. When Teams launches in the browser, select the `Add` button in the dialog to install your app to Teams.
 
->
-> **Prerequisites**
->
-> To run the notification bot template in your local dev machine, you will need:
->
-> - [Node.js](https://nodejs.org/), supported versions: 14, 16, 18
-> - An [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts)
->
-> **Note**
->
-> Your app can be installed into a team, or a group chat, or as personal app. See [Installation and Uninstallation](https://aka.ms/teamsfx-notification-new#customize-installation).
+5. Open a terminal in your Codespaces, and send a POST request to the app with the following command:
+   ```bash
+   curl -X POST http://localhost:3978/api/notification
+   ```
 
-1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-2. In the Account section, sign in with your [Microsoft 365 account](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts) if you haven't already.
-3. Press F5 to start debugging which launches your app in Teams using a web browser. Select `Debug (Edge)` or `Debug (Chrome)`.
-4. When Teams launches in the browser, select the Add button in the dialog to install your app to Teams.
-5. Send a POST request to `http://<endpoint>/api/notification` with your favorite tool (like `Postman`)
+The application will send an Adaptive Card to Teams:
 
-   - When your project is running locally, replace `<endpoint>` with `localhost:3978`
-   - When your project is deployed to Azure App Service, replace `<endpoint>` with the url from Azure App Service
+![Notification Message in Teams](https://user-images.githubusercontent.com/10163840/224254253-21b4dedd-1079-4cda-ac9e-cd3bce725702.png)
 
-The bot will send an Adaptive Card to Teams:
-
-![Notification Message in Teams](https://user-images.githubusercontent.com/7642967/223006044-5003574e-2aee-4a41-9b71-c103d0439012.png)
-
-## What's included in the template
+## Code structure
 
 | Folder / File| Contents |
 | - | - |
@@ -70,70 +57,15 @@ The following files can be customized and demonstrate an example implementation 
 | `src/adaptiveCards/notification-default.json` | A generated Adaptive Card that is sent to Teams |
 | `src/cardModels.js` | The default Adaptive Card data model |
 
-## Extend the notification bot template
-
-There are few customizations you can make to extend the template to fit your business requirements.
-
-1. [Step 1: Customize the trigger point from event source](#step-1-customize-the-trigger-point-from-event-source)
-2. [Step 2: Customize the notification content](#step-2-customize-the-notification-content)
-3. [Step 3: Customize where notifications are sent](#step-3-customize-where-notifications-are-sent)
-
-### Step 1: Customize the trigger point from event source
-
-By default Teams Toolkit scaffolds a single `restify` entry point in `src/index.js`. When a HTTP request is sent to this entry point, the default implementation sends a hard-coded Adaptive Card to Teams. You can customize this behavior by customizing `src/index.js`. A typical implementation might make an API call to retrieve some events and/or data, and then send an Adaptive Card as appropriate.
-
-You can also add additional triggers by:
-
-- Creating new routing: `server.post("/api/new-trigger", ...);`
-- Add Timer trigger(s) via widely-used npm packages such as [cron](https://www.npmjs.com/package/cron), [node-schedule](https://www.npmjs.com/package/node-schedule), etc. Or add other trigger(s) via other packages.
-
-### Step 2: Customize the notification content
-
-`src/adaptiveCards/notification-default.json` defines the default Adaptive Card. You can use the [Adaptive Card Designer](https://adaptivecards.io/designer/) to help visually design your Adaptive Card UI.
-
-`src/cardModels.ts` defines a data structure that is used to fill data for the Adaptive Card. The binding between the model and the Adaptive Card is done by name matching (for example,`CardData.title` maps to `${title}` in the Adaptive Card). You can add, edit, or remove properties and their bindings to customize the Adaptive Card to your needs.
-
-You can also add new cards if needed. Follow this [sample](https://aka.ms/teamsfx-adaptive-card-sample) to see how to build different types of adaptive cards with a list or a table of dynamic contents using `ColumnSet` and `FactSet`.
-
-### Step 3: Customize where notifications are sent
-
-Notifications can be sent to where the bot is installed:
-
-- [Send notifications to a channel](https://aka.ms/teamsfx-notification-new#send-notifications-to-a-channel)
-- [Send notifications to a group chat](https://aka.ms/teamsfx-notification-new#send-notifications-to-a-group-chat)
-- [Send notifications to a personal chat](https://aka.ms/teamsfx-notification-new#send-notifications-to-a-personal-chat)
-
-You can also send the notifications to a specific receiver:
-
-- [Send notifications to a specific channel](https://aka.ms/teamsfx-notification-new#send-notifications-to-a-specific-channel)
-- [Send notifications to a specific person](https://aka.ms/teamsfx-notification-new#send-notifications-to-a-specific-person)
-
-Congratulations, you've just created your own notification! To learn more about extending the notification bot template, [visit the documentation on Github](https://aka.ms/teamsfx-notification-new). You can find more scenarios like:
-
-- [Customize storage](https://aka.ms/teamsfx-notification-new#customize-storage)
-- [Customize adapter](https://aka.ms/teamsfx-notification-new#customize-adapter)
-- [Customize the way to initialize the bot](https://aka.ms/teamsfx-notification-new#customize-initialization)
-- [Add authentication for your notification API](https://aka.ms/teamsfx-notification-new#add-authentication-for-your-notification-api)
-- [Connect to existing APIs](https://aka.ms/teamsfx-notification-new#connect-to-existing-api)
-- [Frequently asked questions](https://aka.ms/teamsfx-notification-new#frequently-asked-questions)
-
-## Extend notification bot with other bot scenarios
-
-Notification bot is compatible with other bot scenarios like command bot and workflow bot.
-
-### Add command to your application
-
-The command and response feature adds the ability for your application to "listen" to commands sent to it via a Teams message and respond to commands with Adaptive Cards. Follow the [steps here](https://aka.ms/teamsfx-command-new#How-to-add-more-command-and-response) to add the command response feature to your workflow bot. Refer [the command bot document](https://aka.ms/teamsfx-command-new) for more information.
-
-### Add workflow to your notification bot
-
-Adaptive cards can be updated on user action to allow user progress through a series of cards that require user input. Developers can define actions and use a bot to return an Adaptive Cards in response to user action. This can be chained into sequential workflows. Follow the [steps here](https://aka.ms/teamsfx-workflow-new#add-more-card-actions) to add workflow feature to your command bot. Refer [the workflow document](https://aka.ms/teamsfx-workflow-new) for more information.
-
-## Additional information and references
-
-- [Manage multiple environments](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-multi-env)
-- [Collaborate with others](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-collaboration)
+## Learn more
+- [Send notification to Teams](https://aka.ms/teamsfx-notification-new)
 - [Teams Toolkit Documentations](https://docs.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-fundamentals)
 - [Teams Toolkit CLI](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-cli)
 - [TeamsFx SDK](https://docs.microsoft.com/microsoftteams/platform/toolkit/teamsfx-sdk)
 - [Teams Toolkit Samples](https://github.com/OfficeDev/TeamsFx-Samples)
+
+## Code of Conduct
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
