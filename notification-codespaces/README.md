@@ -27,6 +27,10 @@ The app is built using the TeamsFx SDK, which provides a simple set of functions
 
 4. When Teams launches in the browser, select the `Add` button in the dialog to install your app to Teams.
 
+   > **Note**: You may need to **allow pop-ups** so that Codespace can open a new browser to sideload the app to Teams:
+   >
+   > ![image](https://user-images.githubusercontent.com/10163840/225506097-18d04d70-ea4c-4a10-bde4-9d38654a2e72.png)
+
 5. Open a terminal in your Codespaces, and send a POST request to the app with the following command:
    ```bash
    curl -X POST http://localhost:3978/api/notification
