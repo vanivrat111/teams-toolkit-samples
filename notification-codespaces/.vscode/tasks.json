@@ -35,6 +35,11 @@
             }
         },
         {
+            "label": "Configure port visibility",
+            "type": "shell",
+            "command": "gh codespace ports visibility 3978:public -c $CODESPACE_NAME"
+        },
+        {
             // Create the debug resources.
             // See https://aka.ms/teamsfx-tasks/provision to know the details and how to customize the args.
             "label": "Provision",
@@ -79,18 +84,24 @@
             }
         },
         {
-            "label": "Configure port visibility",
-            "type": "shell",
-            "command": "gh codespace ports visibility 3978:public -c $CODESPACE_NAME"
-        },
-        {
-            // Launch Teams web client.
-            // See https://aka.ms/teamsfx-deploy-task to know the details and how to customize the args.
+            // Launch Teams web client for codespaces F5.
+            // See https://aka.ms/teamsfx-tasks/launch-web-client to know the details and how to customize the args.
             "label": "Open Teams Web Client",
             "type": "teamsfx",
             "command": "launch-web-client",
             "args": {
-              "env": "local"
+              "env": "local",
+              "manifestPath": "${workspaceFolder}/appPackage/manifest.json"
+            }
+        },
+        {
+            // Launch Teams web client for remote env.
+            // See https://aka.ms/teamsfx-tasks/launch-web-client to know the details and how to customize the args.
+            "label": "Open Teams Web Client (remote)",
+            "type": "teamsfx",
+            "command": "launch-web-client",
+            "args": {
+                "manifestPath": "${workspaceFolder}/appPackage/manifest.json"
             }
         }
     ]

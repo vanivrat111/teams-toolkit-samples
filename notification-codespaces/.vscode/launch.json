@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Remote (Edge)",
-            "type": "pwa-msedge",
+            "name": "Launch Remote (Codespaces)",
+            "type": "node",
             "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${dev:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
+            "preLaunchTask": "Open Teams Web Client (remote)",
             "presentation": {
                 "group": "remote",
                 "order": 1
@@ -13,19 +13,8 @@
             "internalConsoleOptions": "neverOpen"
         },
         {
-            "name": "Launch Remote (Chrome)",
-            "type": "pwa-chrome",
-            "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${dev:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "presentation": {
-                "group": "remote",
-                "order": 2
-            },
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "name": "Attach to Bot",
-            "type": "pwa-node",
+            "name": "Attach to Local Service",
+            "type": "node",
             "request": "attach",
             "port": 9239,
             "restart": true,
@@ -40,7 +29,7 @@
         {
             "name": "Debug (Codespaces)",
             "configurations": [
-                "Attach to Bot"
+                "Attach to Local Service"
             ],
             "preLaunchTask": "Start Teams App in Codespaces",
             "presentation": {
