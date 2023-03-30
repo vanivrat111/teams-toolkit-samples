@@ -1,4 +1,3 @@
-
 # Getting Started with Hello World Tab Sample
 
 [![Open notification app in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=dol%2Fcodespaces&repo=348288141&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fhello-world-tab-codespaces%2Fdevcontainer.json&location=WestUs2)

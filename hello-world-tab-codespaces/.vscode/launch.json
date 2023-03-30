@@ -9,79 +9,20 @@
             "postDebugTask": "Stop All",
             "presentation": {
                 "group": "all",
-                "order": 0
+                "order": 1
             },
             "internalConsoleOptions": "neverOpen"
         },
         {
-            "name": "Launch Remote (Edge)",
-            "type": "pwa-msedge",
+            "name": "Launch Remote (Codespaces)",
+            "type": "node",
             "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${dev:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
+            "preLaunchTask": "Open Teams Web Client (remote)",
             "presentation": {
                 "group": "remote",
                 "order": 1
             },
             "internalConsoleOptions": "neverOpen"
         },
-        {
-            "name": "Launch Remote (Chrome)",
-            "type": "pwa-chrome",
-            "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${dev:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "presentation": {
-                "group": "remote",
-                "order": 2
-            },
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "name": "Attach to Frontend (Edge)",
-            "type": "pwa-msedge",
-            "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${local:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "presentation": {
-                "group": "all",
-                "hidden": true
-            },
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "name": "Attach to Frontend (Chrome)",
-            "type": "pwa-chrome",
-            "request": "launch",
-            "url": "https://teams.microsoft.com/l/app/${local:teamsAppId}?installAppPackage=true&webjoin=true&${account-hint}",
-            "presentation": {
-                "group": "all",
-                "hidden": true
-            },
-            "internalConsoleOptions": "neverOpen"
-        }
-    ],
-    "compounds": [
-        {
-            "name": "Debug (Edge)",
-            "configurations": [
-                "Attach to Frontend (Edge)"
-            ],
-            "preLaunchTask": "Start Teams App Locally",
-            "presentation": {
-                "group": "all",
-                "order": 1
-            },
-            "stopAll": true
-        },
-        {
-            "name": "Debug (Chrome)",
-            "configurations": [
-                "Attach to Frontend (Chrome)"
-            ],
-            "preLaunchTask": "Start Teams App Locally",
-            "presentation": {
-                "group": "all",
-                "order": 2
-            },
-            "stopAll": true
-        }
     ]
 }
