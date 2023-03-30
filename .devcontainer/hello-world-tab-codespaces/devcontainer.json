@@ -13,7 +13,7 @@
   ],
   "portsAttributes": {
     "53000": {
-      "label": "tab",
+      "label": "app",
       "protocol": "https"
     }
   },
