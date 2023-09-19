@@ -19,6 +19,7 @@
             "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
+            "maximumToolkitVersion": "5.0.0",
             "suggested": true
         },
         {
@@ -39,6 +40,7 @@
             "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
+            "minimumToolkitVersion": "6.0.0",
             "suggested": true
         },
         {
