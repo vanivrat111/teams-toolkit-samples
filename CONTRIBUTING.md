@@ -13,7 +13,7 @@ instructions provided by the bot. You will only need to do this once across all 
 ## How to submit your sample
 To give you an overview of the process to contribute to our samples repo, you will be going through this:
 
-![Sample Onboarding Process](../assets/contributing_process.png)
+![Sample Onboarding Process](./assets/Contributing_process.png)
 
 > The purple blocks are things you will need to do.
 > The green blocks are what we will take care of.
@@ -23,7 +23,7 @@ Before your start, you might want to know whether you will need to commit your s
 Some explaination of how to perform each step in above process:
 1. Submit your source code by creating a pull request to our repo (target `dev` branch by default), a typical project is in below structure. Make sure you have the `thumbnail.png` and `README.md` files included in your source code. 
 
-> You can run the [Sample Validatioin Tool](https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/validation-tool) before raising the PR to make sure your sample satisfies our requirements.
+> You can run the [Sample Validation Tool](https://github.com/OfficeDev/TeamsFx-Samples/tree/dev/validation-tool) before raising the PR to make sure your sample satisfies our requirements.
 
 ```
 - sampleTeamsProject
