@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resourceBaseName": {
+            "value": "bot${{RESOURCE_SUFFIX}}"
+        },
+        "accessAsUserPermissionId": {
+            "value": "66762e4a-5ee2-4c8e-abce-27c7864558bf"
+        },
+        "botDomain": {
+            "value": "${{BOT_DOMAIN}}"
+        }
+    }
+}
