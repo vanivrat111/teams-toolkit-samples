@@ -3,13 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "resourceBaseName": {
-      "value": "bot${{RESOURCE_SUFFIX}}"
-    },
-    "botAadAppClientId": {
-      "value": "${{BOT_ID}}"
-    },
-    "botAadAppClientSecret": {
-      "value": "${{SECRET_BOT_PASSWORD}}"
+      "value": "bota6w02s"
     },
     "webAppSKU": {
       "value": "B1"
@@ -17,17 +11,8 @@
     "botDisplayName": {
       "value": "bot-sso"
     },
-    "aadAppClientId": {
-      "value": "${{AAD_APP_CLIENT_ID}}"
-    },
-    "aadAppClientSecret": {
-      "value": "${{SECRET_AAD_APP_CLIENT_SECRET}}"
-    },
-    "aadAppTenantId": {
-      "value": "${{AAD_APP_TENANT_ID}}"
-    },
-    "aadAppOauthAuthorityHost": {
-      "value": "${{AAD_APP_OAUTH_AUTHORITY_HOST}}"
+    "accessAsUserPermissionId": {
+      "value": "66762e4a-5ee2-4c8e-abce-27c7864558bf"
     }
   }
 }
