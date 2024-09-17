@@ -3,6 +3,7 @@ const { notificationApp } = require("./internal/initialize");
 const ACData = require("adaptivecards-templating");
 const { TeamsBot } = require("./teamsBot");
 const restify = require("restify");
+const { ImageCardView } = require("botbuilder");
 
 // Create HTTP server.
 const server = restify.createServer();
@@ -35,6 +36,7 @@ server.post(
               appName: "Contoso App Notification",
               description: `This is a sample http-triggered notification to ${target.type}`,
               notificationUrl: "https://aka.ms/teamsfx-notification-new",
+              
             }
           })
         );
