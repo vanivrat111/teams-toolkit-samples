@@ -1,6 +1,8 @@
 const { BotBuilderCloudAdapter } = require("@microsoft/teamsfx");
 const ConversationBot = BotBuilderCloudAdapter.ConversationBot;
 const config = require("./config");
+const { DoSomethingCommandHandler } = require("../doSomethingCommandHandler");
+const {DoSomethingActionHandler} = require("../cardActions/doSomethingActionHandler")
 
 // Create bot.
 const notificationApp = new ConversationBot({
@@ -11,6 +13,16 @@ const notificationApp = new ConversationBot({
   notification: {
     enabled: true,
   },
+  command: {
+    enabled: true,
+    commands: [ new DoSomethingCommandHandler()],
+  },
+  cardAction : {
+    enabled: true, 
+       actions: [ 
+         new DoSomethingActionHandler() 
+       ], 
+  }
 });
 
 module.exports = {

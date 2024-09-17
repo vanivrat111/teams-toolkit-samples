@@ -31,7 +31,26 @@
                 "groupChat"
             ],
             "supportsFiles": false,
-            "isNotificationOnly": false
+            "isNotificationOnly": false,
+            "commandLists": [
+                {
+                    "scopes": [
+                        "personal",
+                        "groupChat",
+                        "team"
+                    ],
+                    "commands": [
+                        {
+                            "title": "helloWorld",
+                            "description": "A helloworld command to send a welcome message"
+                        },
+                        {
+                            "title": "doSomething",
+                            "description": "A sample do something command"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "composeExtensions": [],
