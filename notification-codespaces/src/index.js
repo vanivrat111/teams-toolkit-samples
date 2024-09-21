@@ -4,6 +4,7 @@ const ACData = require("adaptivecards-templating");
 const { TeamsBot } = require("./teamsBot");
 const restify = require("restify");
 const { ImageCardView } = require("botbuilder");
+const GraphHelper = require("./helpers/graphHelper");
 
 // Create HTTP server.
 const server = restify.createServer();
@@ -121,6 +122,12 @@ server.post(
 const teamsBot = new TeamsBot();
 server.post("/api/messages", async (req, res) => {
   await notificationApp.requestHandler(req, res, async (context) => {
+    // context.adapter.createConversationAsync(
+    //   process.env.BOT_ID,
+
+    // )
+    var graphHelper = new GraphHelper();
+    var groupChat = graphHelper.CreateGroupChatAsync(["meganb@zn6s8.onmicrosoft.com","admin@zn6s8.onmicrosoft.com"], "test group");
     await teamsBot.run(context);
   });
 });

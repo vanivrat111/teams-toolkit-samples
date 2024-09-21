@@ -10,6 +10,8 @@ const { AdaptiveCards } = require("@microsoft/adaptivecards-tools");
 
             };
             const responseCardJson = AdaptiveCards.declare(responseCard).render(actionData);
+
+            
             return InvokeResponseFactory.adaptiveCard(responseCardJson);
         }
     }
