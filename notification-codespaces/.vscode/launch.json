@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+    
         {
             "name": "Launch Remote (Codespaces)",
             "type": "node",
@@ -31,7 +32,7 @@
             "configurations": [
                 "Attach to Local Service"
             ],
-            "preLaunchTask": "Start Teams App in Codespaces",
+            // "preLaunchTask": "Start Teams App in Codespaces",
             "presentation": {
                 "group": "all",
                 "order": 1

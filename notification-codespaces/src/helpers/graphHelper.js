@@ -104,6 +104,28 @@ class GraphHelper {
         }
     }
 
+    async AddAppToChat(chatId) {
+        try 
+        {
+            this._token = await this.GetAccessToken();
+            this.graphClient = Client.init({
+                authProvider: (done) => {
+                    done(null, this._token); // First parameter takes an error if you can't get an access token.
+                }
+            });
+            
+    
+            const data = {
+                "teamsApp@odata.bind":"https://graph.microsoft.com/v1.0/appCatalogs/teamsApps/0da72ab7-e4c3-40ce-bfcc-f5397ef54671"
+            };
+    
+            return await this.graphClient.api(`/chats/${chatId}/installedApps`).post(data);
+        }
+        catch (ex) {
+            console.log(ex);
+        }
+    }
+
     /**
      * Gets the user's photo
      * @param {string} userMail User mail.

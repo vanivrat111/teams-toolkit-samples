@@ -117,7 +117,7 @@ server.post(
     res.json({});
   }
 );
-
+var count = 0;
 // Bot Framework message handler.
 const teamsBot = new TeamsBot();
 server.post("/api/messages", async (req, res) => {
@@ -127,7 +127,11 @@ server.post("/api/messages", async (req, res) => {
 
     // )
     var graphHelper = new GraphHelper();
-    var groupChat = graphHelper.CreateGroupChatAsync(["meganb@zn6s8.onmicrosoft.com","admin@zn6s8.onmicrosoft.com"], "test group");
+    if(count == 0) {
+      var groupChat = await graphHelper.CreateGroupChatAsync(["meganb@zn6s8.onmicrosoft.com","admin@zn6s8.onmicrosoft.com"], "test group 0623pm");
+      graphHelper.AddAppToChat(groupChat.id);
+      count = 1;
+    }
     await teamsBot.run(context);
   });
 });
